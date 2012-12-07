@@ -1,1 +1,16 @@
-<%= render(partial: "shared/repos", locals: {collection: @starred_repos, title: "My Starred Repositories"}) %>
+<script>
+  $(document).ready(function(){
+    setInterval(function(){
+      $.ajax({url: "/my/starred_repos.js",
+        success: function(data) {
+          $("#repositories").html(data)
+        },
+        dataType:"html"});
+    },30000);
+  });
+</script>
+
+
+<div id="repositories">
+  <%= render(partial: "shared/repos", locals: {collection: @starred_repos, title: "My Starred Repositories"}) %>
+</div>
