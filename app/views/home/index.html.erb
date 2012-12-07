@@ -1,0 +1,11 @@
+<h1>Welcome to the Github Programming Demo App</h1>
+<h2>This is going to be a test app</h2>
+<% if user_signed_in? %>
+  <p>
+    Now that you're authenticated, we're going to do some github tasks.
+  </p>
+<% else %>
+  <p>
+    First you're going to have to login with your github credientials.  <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github) %>
+  </p>
+<% end %>

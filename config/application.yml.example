@@ -1,0 +1,12 @@
+development:
+  github:
+    id: ""
+    secret: ""
+test:
+  github:
+    id: ""
+    secret: ""
+production:
+  github:
+    id: ""
+    secret: ""

@@ -14,3 +14,12 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+.DS_Store
+config/database.yml
+config/application.yml
+capybara*
+coverage.data
+.rvmrc
+.sass-cache/
+public/assets/
+.powrc

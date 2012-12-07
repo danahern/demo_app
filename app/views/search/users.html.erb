@@ -1,0 +1,26 @@
+<div class="row-fluid">
+  <div class="span3">
+    <div class="well">
+      <%= form_tag users_search_index_path, method: :get, class: "form-search", method: :get do %>
+        <div class="control-group">
+          <%= label_tag :user_name, nil, class: "control-label" %>
+          <div class="controls">
+            <%= text_field_tag :user_name, params[:user_name], class: "search-query", placeholder: "User Name" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <%= submit_tag "Get Starred Repos", class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="span9">
+    <% if @starred %>
+      <%= render(partial: "shared/repos", locals: {collection: @starred, title: "Search User for Starred Repositories"}) %>
+    <% else %>
+      <p>Search for a users' starred repositories by putting the user name in on the left</p>
+    <% end %>
+  </div>
+</div>

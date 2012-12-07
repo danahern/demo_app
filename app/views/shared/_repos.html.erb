@@ -1,0 +1,34 @@
+<% if defined?(title) %>
+  <h1><%= title %></h1>
+<% end %>
+<% if collection.present? %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th class="span3">Name</th>
+        <th class="span3">Owner</th>
+        <th class="span1">Language</th>
+        <th class="span3">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% collection.each do |object| %>
+        <tr>
+          <td><%= link_to object.name, object.html_url %></td>
+          <td>
+            <span class="avatar">
+              <%= link_to "http://github.com/#{object.owner.login}" do %>
+                <%= image_tag(object.owner.avatar_url, height: 50, width: 50) %>
+                <%= object.owner.login %>
+              <% end %>
+            </span>
+          </td>
+          <td><%= object.language %></td>
+          <td><%= object.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Sorry, no results.</p>
+<% end %>
