@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207024158) do
+ActiveRecord::Schema.define(:version => 20121208152614) do
+
+  create_table "recommendations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "repo_name"
+    t.string   "owner"
+    t.string   "owner_avatar_url"
+    t.string   "description"
+    t.string   "language"
+    t.string   "homepage"
+    t.string   "html_url"
+    t.string   "full_name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "starred_repositories", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "repo_name"
+    t.string   "owner"
+    t.string   "owner_avatar_url"
+    t.string   "description"
+    t.string   "language"
+    t.string   "homepage"
+    t.string   "html_url"
+    t.string   "full_name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.integer  "sign_in_count",      :default => 0

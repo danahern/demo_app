@@ -58,6 +58,9 @@ GithubApi::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
 
+  match "stars" => 'stars#create', :via => [:post]
+  match "stars" => 'stars#destroy', :via => [:delete]
+
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
@@ -65,10 +68,7 @@ GithubApi::Application.routes.draw do
 
   match "/my/starred_repos" => "my#starred_repos"
 
-  resources :search do
-    collection do
-      get :users
-    end
-  end
+  resources :search
+
   root :to => "home#index"
 end

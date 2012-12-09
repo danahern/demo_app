@@ -1,0 +1,1 @@
+$("#<%= @user_name %>_<%= @repo_name %>").html("<%= j link_to("<i class='icon-star-empty'></i> Unstar".html_safe, stars_path(user_name: @user_name, repo_name: @repo_name), class: "btn star-action" , method: :delete, remote: true, disable_with: "Loading...") %>");

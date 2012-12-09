@@ -14,12 +14,12 @@
     <tbody>
       <% collection.each do |object| %>
         <tr>
-          <td><%= link_to object.name, object.html_url %></td>
+          <td><%= link_to object.repo_name, object.html_url %></td>
           <td>
             <span class="avatar">
-              <%= link_to "http://github.com/#{object.owner.login}" do %>
-                <%= image_tag(object.owner.avatar_url, height: 50, width: 50) %>
-                <%= object.owner.login %>
+              <%= link_to "http://github.com/#{object.owner}" do %>
+                <%= image_tag(object.owner_avatar_url, height: 50, width: 50) %>
+                <%= object.owner %>
               <% end %>
             </span>
           </td>

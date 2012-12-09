@@ -32,12 +32,13 @@
             <th class="span3">Owner</th>
             <th class="span1">Language</th>
             <th class="span3">Description</th>
+            <th class="span2">Actions</th>
           </tr>
         </thead>
         <tbody>
           <% @repos.repositories.each do |repo| %>
             <tr>
-              <td><%= link_to repo.name, repo.url %></td>
+              <td><%= link_to repo.name, "http://github.com/#{repo.owner}/#{repo.name}" %></td>
               <td>
                 <span class="avatar">
                   <%= link_to "http://github.com/#{repo.owner}" do %>
@@ -47,6 +48,21 @@
               </td>
               <td><%= repo.language %></td>
               <td><%= repo.description %></td>
+              <td id="<%= "#{repo.owner}_#{repo.name}" %>">
+                <% if user_signed_in? %>
+                  <% if @starred_repos.any?{|starred_repo| starred_repo.full_name == "#{repo.owner}/#{repo.name}" }  %>
+                    <%= link_to stars_path(user_name: repo.owner, repo_name: repo.name), class: "btn star-action" , method: :delete, remote: true, disable_with: "Loading..." do %>
+                      <i class="icon-star-empty"></i> Unstar
+                    <% end %>
+                  <% else %>
+                    <%= link_to stars_path(user_name: repo.owner, repo_name: repo.name), class: "btn star-action", remote: true, method: :post, disable_with: "Loading..." do %>
+                      <i class="icon-star"></i> Star
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  Please login to perform actions
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

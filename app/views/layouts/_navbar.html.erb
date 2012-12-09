@@ -1,15 +1,12 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href="#">Github Programming Demo</a>
+    <%= link_to "Github Programming Demo", root_path, class: "brand" %>
     <ul class="nav">
-      <li class="<%= "active" if controller_name == "home" && action_name == "index" %>">
-        <%= link_to "Home", root_path %>
-      </li>
       <% if user_signed_in? %>
-        <li>
+        <li class="<%= "active" if controller_name == "search" %>">
           <%= link_to "Search Repos", search_index_path %>
         </li>
-        <li>
+        <li class="<%= "active" if controller_name == "my" %>">
           <%= link_to "My Starred Repos", my_starred_repos_path %>
         </li>
         <li>
@@ -21,5 +18,8 @@
         </li>
       <% end %>
     </ul>
+    <%= form_tag search_index_path, method: :get, class: "navbar-search pull-left", method: :get do %>
+      <%= text_field_tag :keywords, params[:keywords], class: "search-query", placeholder: "Seearch Repositories" %>
+    <% end %>
   </div>
 </div>

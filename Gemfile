@@ -10,6 +10,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem "github_api"
+gem "resque"
 
 group :development do
   gem 'awesome_print'
@@ -20,6 +21,7 @@ group :development do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
+  # gem 'net-http-spy'
 end
 
 group :test do
