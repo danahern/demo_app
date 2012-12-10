@@ -8,17 +8,21 @@ Demo application that uses the github API to perform various actions surrounding
 Requirements
 --------
 Redis
+
 Github Application Keys
 
 Installation
 --------
 cp config/database.yml.example config/database.yml
+
 cp config/application.yml.example config/application.yml
 
 Edit the database.yml file to match up with your database.
+
 Edit the application.yml file to add in your github application key and secret. (Make sure you point the application to wherever you're going to be running the server.)
 
 Start the server up (rails s)
+
 Run the resque processor (rake resque:work QUEUE=recommendations)
 
 Enjoy!
@@ -28,11 +32,16 @@ Testing
 Here are the commands to get testing up and working.
 
 rake db:create
+
 rake db:migrate
+
 rake db:test:prepare
+
 rake
 
+
 Guard is also being used for automated test reloading
+
 guard -c
 
 Notes
@@ -54,4 +63,5 @@ In several areas I am reloading the website via ajax every 30 seconds.  This wil
 Recommendations
 ------------
 With the recommendations it will generate them for you when you hit the recommendations page.  This will display a loading bar until it automatically reloads and has the new recommendations.
+
 Recommendations right now are set to be generated every hour.  If you hit the link and you don't have 'stale' enough recommendations then it will display them for you and won't write a task to the background processor.  However if the recommendations are stale or if you don't have any then it will right the task to the background processor.
