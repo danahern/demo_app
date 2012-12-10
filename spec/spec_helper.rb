@@ -4,6 +4,10 @@ require 'spork'
 #require 'spork/ext/ruby-debug'
 
 Spork.prefork do
+  unless ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
@@ -12,6 +16,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  require 'shoulda/matchers/integrations/rspec'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -44,12 +49,21 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    config.include Devise::TestHelpers, :type => :controller
+    config.extend ControllerMacros, :type => :controller
   end
 
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
+  if ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+
+  FactoryGirl.reload
 
 end
 

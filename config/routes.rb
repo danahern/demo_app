@@ -67,6 +67,7 @@ GithubApi::Application.routes.draw do
   match "/github/callback" => "sessions#callback"
 
   match "/my/starred_repos" => "my#starred_repos"
+  match "/my/recommendations" => "my#recommendations"
 
   resources :search
 

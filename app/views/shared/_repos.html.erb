@@ -9,6 +9,7 @@
         <th class="span3">Owner</th>
         <th class="span1">Language</th>
         <th class="span3">Description</th>
+        <th class="span3">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +26,21 @@
           </td>
           <td><%= object.language %></td>
           <td><%= object.description %></td>
+          <td id="<%= "#{object.owner}_#{object.repo_name}" %>">
+            <% if user_signed_in? %>
+              <% if current_user.starred_repositories.any?{|starred_repo| starred_repo.full_name == object.full_name }  %>
+                <%= link_to stars_path(user_name: object.owner, repo_name: object.repo_name), class: "btn star-action" , method: :delete, remote: true, disable_with: "Loading..." do %>
+                  <i class="icon-star-empty"></i> Unstar
+                <% end %>
+              <% else %>
+                <%= link_to stars_path(user_name: object.owner, repo_name: object.repo_name), class: "btn star-action", remote: true, method: :post, disable_with: "Loading..." do %>
+                  <i class="icon-star"></i> Star
+                <% end %>
+              <% end %>
+            <% else %>
+              Please login to perform actions
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -1,0 +1,14 @@
+<% if @recommendations.present? %>
+  <div class="page-header">
+    <h1>Recommendations</h1>
+    <p>
+      <small>Last updated at <%= current_user.recommendations_generated_at.to_s(:standard) %>. (Updated every hour)</small>
+    </p>
+  </div>
+  <%= render(partial: "shared/repos", locals: {collection: @recommendations}) %>
+<% else %>
+  <h2>Loading Recommendations, this could take a while.  Please be patient.  The page will reload automatically when it is complete.</h2>
+  <div id="bar">
+    <%= image_tag(asset_path("ajax-loader.gif")) %>
+  </div>
+<% end %>

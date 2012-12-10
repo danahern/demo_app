@@ -14,24 +14,27 @@ gem "resque"
 
 group :development do
   gem 'awesome_print'
-  gem 'guard'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'rb-inotify', :require => false
-  gem 'rb-fsevent', :require => false
-  gem 'rb-fchange', :require => false
   # gem 'net-http-spy'
 end
 
-group :test do
-  gem 'cucumber-rails'
-  gem 'rspec-rails'
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+  gem 'guard'
+  # gem 'guard-cucumber'
+  # gem 'cucumber-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-fsevent', '~> 0.9.1'
   gem 'spork', '~> 1.0rc'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'simplecov'
   gem 'database_cleaner'
+  gem "shoulda"
+end
+
+group :test do
+  gem 'sqlite3'
 end
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208152614) do
+ActiveRecord::Schema.define(:version => 20121210003437) do
 
   create_table "recommendations", :force => true do |t|
     t.integer  "user_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20121208152614) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "sign_in_count",      :default => 0
+    t.integer  "sign_in_count",                :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -52,8 +52,9 @@ ActiveRecord::Schema.define(:version => 20121208152614) do
     t.string   "token"
     t.string   "name"
     t.string   "login"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.datetime "recommendations_generated_at"
   end
 
 end

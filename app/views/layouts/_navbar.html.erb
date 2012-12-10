@@ -1,25 +1,37 @@
-<div class="navbar">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <%= link_to "Github Programming Demo", root_path, class: "brand" %>
-    <ul class="nav">
-      <% if user_signed_in? %>
-        <li class="<%= "active" if controller_name == "search" %>">
-          <%= link_to "Search Repos", search_index_path %>
-        </li>
-        <li class="<%= "active" if controller_name == "my" %>">
-          <%= link_to "My Starred Repos", my_starred_repos_path %>
-        </li>
-        <li>
-          <%= link_to "Logout", destroy_user_session_path %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Login With Github", user_omniauth_authorize_path(:github) %>
-        </li>
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Github Programming Demo", root_path, class: "brand" %>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <% if user_signed_in? %>
+            <li class="<%= "active" if controller_name == "search" %>">
+              <%= link_to "Search Repos", search_index_path %>
+            </li>
+            <li class="<%= "active" if controller_name == "my" && action_name == "starred_repositories" %>">
+              <%= link_to "My Starred Repos", my_starred_repos_path %>
+            </li>
+            <li class="<%= "active" if controller_name == "my" && action_name == "starred_repositories" %>">
+              <%= link_to "My Recommendations", my_recommendations_path %>
+            </li>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Login With Github", user_omniauth_authorize_path(:github) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <%= form_tag search_index_path, method: :get, class: "navbar-search pull-left", method: :get do %>
+        <%= text_field_tag :keywords, params[:keywords], class: "search-query", placeholder: "Seearch Repositories", required: true %>
       <% end %>
-    </ul>
-    <%= form_tag search_index_path, method: :get, class: "navbar-search pull-left", method: :get do %>
-      <%= text_field_tag :keywords, params[:keywords], class: "search-query", placeholder: "Seearch Repositories" %>
-    <% end %>
+    </div>
   </div>
 </div>
