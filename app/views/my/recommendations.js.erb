@@ -8,15 +8,11 @@
   <%= render(partial: "shared/repos", locals: {collection: @recommendations}) %>
 <% else %>
   <h2>Loading Recommendations, this could take a while.  Please be patient.  The page will reload automatically when it is complete.</h2>
-  <div id="bar">
-    <div id="load">
-      <div>G</div>
-      <div>N</div>
-      <div>I</div>
-      <div>D</div>
-      <div>A</div>
-      <div>O</div>
-      <div>L</div>
-    </div>
-  </div>
+  <ul class="drops blue">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading</li>
+  </ul>
 <% end %>
