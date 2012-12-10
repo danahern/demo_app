@@ -9,7 +9,7 @@ Requirements
 --------
 Redis
 
-Github Application Keys
+Github Application key and secret (https://github.com/settings/applications/new)
 
 Installation
 --------
@@ -17,7 +17,7 @@ cp config/database.yml.example config/database.yml
 
 cp config/application.yml.example config/application.yml
 
-Edit the database.yml file to match up with your database.
+Edit the database.yml file to match up with your database (I'm using a mysql database you made need to change the gemfile if you're running something different).
 
 Edit the application.yml file to add in your github application key and secret. (Make sure you point the application to wherever you're going to be running the server.)
 
