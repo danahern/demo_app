@@ -5,6 +5,33 @@ Description
 --------
 Demo application that uses the github API to perform various actions surrounding starred repositories.
 
+What is this
+--------
+This is a code challenge, the goal was to spend a few hours and write website that used the github API.  It would allow someone to view and manage their github respositories.
+
+Stats
+```Text
+Test Coverage: 72.83%
+Lines of Code: 67 (tested) / 92 (total)
+Time Spent: 5 hours
+```
+
+Challenge
+-------
+Build a Ruby on Rails application that lets someone view and manage their starred GitHub repositories.
+
+The application should have the following features:
+
+1. A view of all of the users starred repos.
+2. The ability to unstar a repo.
+3. A search interface to find new repositories, which you can star.
+4. Real-time display of newly starred repositories.
+    a. If a user stars a repo in the GitHub UI it should show up in your app without having to refresh the browser.
+
+Bonus Points - Recommend Repos
+1. Build a feature that recommends public github repositories based on your starred repos.
+
+
 Requirements
 --------
 Redis
@@ -13,9 +40,13 @@ Github Application key and secret (https://github.com/settings/applications/new)
 
 Installation
 --------
+```
 cp config/database.yml.example config/database.yml
+```
 
+```
 cp config/application.yml.example config/application.yml
+```
 
 Edit the database.yml file to match up with your database (I'm using a mysql database you made need to change the gemfile if you're running something different).
 
@@ -31,18 +62,18 @@ Testing
 --------
 Here are the commands to get testing up and working.
 
+```
 rake db:create
-
 rake db:migrate
-
 rake db:test:prepare
-
 rake
-
+```
 
 Guard is also being used for automated test reloading
 
+```
 guard -c
+```
 
 Notes
 ==========
